@@ -1,0 +1,156 @@
+{
+    "receipt": {
+        "identifier": "XXX-XXX-XXX-XXX",
+        "version": "dev-3a",
+        "timestamp": "2021-01-01T00:00:00",
+        "checksum": "0000FFFF9999",
+        "language": "EN-GB",
+        "status": "issued",
+        "signatures": [
+            {
+                "entityid": "PIIC-A",
+                "signature": "XXX-XXX-XXX-XXX",
+                "role": "PII-Controller"
+            },
+            {
+                "entityid": "PIIP-1",
+                "signature": "XXX-XXX-XXX-XXX",
+                "role": "PII-Principal"
+            },
+            {
+                "entity": "OpenConsent",
+                "signature": "XXX-XXX-XXX-XXX",
+                "role": "Witness"
+            }
+        ],
+        "revokesreceipts": [],
+        "companionreceipts": []
+    },
+    "piicontrollers": [{
+        "name": "Acme Inc.",
+        "localid": "PIIC-A",
+        "address": "Wonderland",
+        "url": "http://example.com/",
+        "contact": {
+            "phone": "000",
+            "email": "acme@example.com"
+        },
+        "policies": {
+            "privacy": "http://example.com/privacy",
+            "termsconditions": "http://example.com/tandc"
+        }
+    }],
+    "piiprincipal": {
+        "localid": "PIIP-1",
+        "identifiers": [{
+            "email": "jane@example.com"
+        }]
+    },
+    "jurisdictions": {
+        "eu": {
+            "laws": ["gdpr"],
+            "rights": {
+                "right to object": "http://example.com/object",
+                "data portability": "https://example.com/download"
+            }
+        },
+        "california": {
+            "laws": ["ccpa", "cpra"],
+            "rights": {
+                "do not sell": "http://example.com/opt-out-selling"
+            }
+        }
+    },
+    "consent": {
+        "status": "given",
+        "type": "non-explicit",
+        "identifier": "1234-abcd-0000",
+        "location": "https://example.com/",
+        "timestamp": "2021-01-01T00:00:00",
+        "expiry": "2022-01-01T00:00:00",
+        "withdrawal": "https://example.com/withdraw",
+        "signals": {
+            "dnt": true,
+            "gpc": true
+        }
+    },
+    "purposes": [
+        {
+            "purpose": "send newsletters",
+            "category": "marketing",
+            "processing": {
+                "operations": ["collect", "use", "store", "share"],
+                "location": ["servers:EU"],
+                "processors": {
+                    "Mailchimp": "http://example.com/mailchimp"
+                },
+            },
+            "pii": {
+                "nonsensitive": ["email"],
+                "source": ["website"],
+                "collection": ["submitted"],
+                "storage": {
+                    "location": ["servers:EU"],
+                    "duration": ["2 years"]
+                }
+            }
+        }
+        {
+            "purpose": "analyse service audience",
+            "category": "marketing",
+            "processing": {
+                "operations": ["collect", "use", "store", "share"],
+                "algorithmic": true,
+                "location": ["servers:EU"],
+                "processors": {
+                    "Umbrella Corp.": "http://example.com/umbrella"
+                },
+            },
+            "pii": {
+                "nonsensitive": ["email"],
+                "sensitive": ["location"],
+                "source": ["device", "website"],
+                "collection": ["observed", "inferred"],
+                "storage": {
+                    "location": ["servers:EU"],
+                    "duration": ["6 months"]
+                }
+            }
+        },
+        {
+            "purpose": "create personalised profiling",
+            "category": "marketing",
+            "thirdparties": [
+                {
+                    "name": "Umbrella Corp.",
+                    "address": "Racoon City",
+                    "url": "http://example.com/",
+                    "contact": {
+                        "phone": "000",
+                        "email": "umbrella@example.com"
+                    },
+                    "policies": {
+                        "privacy": "http://example.com/privacy",
+                        "termsconditions": "http://example.com/tandc"
+                    },
+                }
+            ],
+            "processing": {
+                "operations": ["collect", "use", "store", "share"],
+                "algorithmic": true,
+                "profiling": true,
+                "location": ["servers:EU"],
+            },
+            "pii": {
+                "nonsensitive": ["email"],
+                "sensitive": ["location"],
+                "source": ["device", "website"],
+                "collection": ["observed", "inferred"],
+                "storage": {
+                    "location": ["servers:EU"],
+                    "duration": ["6 months"]
+                }
+            }
+        }
+    ]
+}
